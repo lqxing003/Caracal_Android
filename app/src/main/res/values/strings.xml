@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Caracal</string>
     <string name="action_settings">Settings</string>
+
+    <string name="manual_add_express">手动添加单号</string>
+    <string name="scan_add_express">扫描快递单</string>
 </resources>

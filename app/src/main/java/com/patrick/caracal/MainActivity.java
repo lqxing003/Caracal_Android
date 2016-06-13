@@ -14,24 +14,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
-                startActivityForResult(intent, REQUEST_CODE);
-            }
-        });
+//
+//        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+//                startActivityForResult(intent, REQUEST_CODE);
+//            }
+//        });
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){ //RESULT_OK = -1
-            Bundle bundle = data.getExtras();
-            String scanResult = bundle.getString("result");
-            Toast.makeText(MainActivity.this, scanResult, Toast.LENGTH_LONG).show();
-        }
-    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(resultCode == RESULT_OK){ //RESULT_OK = -1
+//            Bundle bundle = data.getExtras();
+//            String scanResult = bundle.getString("result");
+//            Toast.makeText(MainActivity.this, scanResult, Toast.LENGTH_LONG).show();
+//        }
+//    }
 }
