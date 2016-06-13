@@ -7,4 +7,11 @@
     android:layout_height="match_parent"
     tools:context="com.patrick.caracal.MainActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:text="Button"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="63dp" />
 </android.support.constraint.ConstraintLayout>
