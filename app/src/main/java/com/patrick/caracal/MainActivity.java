@@ -54,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting colors for different tabs when there's more than three of them.
         // You can set colors for tabs in three different ways as shown below.
-        bottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.colorPrimary));
-        bottomBar.mapColorForTab(1, ContextCompat.getColor(this, R.color.colorPrimary));
-        bottomBar.mapColorForTab(2, ContextCompat.getColor(this, R.color.colorPrimary));
-        bottomBar.mapColorForTab(3, ContextCompat.getColor(this, R.color.colorPrimary));
+        bottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.bottombar_color));
+        bottomBar.mapColorForTab(1, ContextCompat.getColor(this, R.color.bottombar_color));
+        bottomBar.mapColorForTab(2, ContextCompat.getColor(this, R.color.bottombar_color));
+        bottomBar.mapColorForTab(3, ContextCompat.getColor(this, R.color.bottombar_color));
 
 
         fragments.add(HomeFragment.newInstance());

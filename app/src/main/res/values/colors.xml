@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="colorAccent">#FFAB40</color>
 
+    <color name="bottombar_color">#424242</color>
 
     <!--QRCode scanner color begin-->
     <color name="viewfinder_mask">#60000000</color>
