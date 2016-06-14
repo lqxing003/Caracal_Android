@@ -36,7 +36,6 @@ public class KDNiaoAPI {
      * @param callback 回调
      */
     public static void queryExp(String expNo, String expCode, Callback callback) throws Exception{
-
         String requestData = "{'OrderCode':'','ShipperCode':'" + expNo + "','LogisticCode':'" + expCode + "'}";
 
         String bodyContent = generateParamsBodyStr(requestData,TYPE_QUERY);
@@ -48,6 +47,8 @@ public class KDNiaoAPI {
                 .build();
         client.newCall(request).enqueue(callback);
     }
+
+    //TODO 在线下单接口
 
     /**
      * 生成 post body的内容
