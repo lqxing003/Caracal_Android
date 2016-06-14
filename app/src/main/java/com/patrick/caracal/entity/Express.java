@@ -3,12 +3,14 @@ package com.patrick.caracal.entity;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Patrick on 16/6/12.
  *
  * 快递实例
  */
+@RealmClass
 public class Express implements RealmModel {
 
     public static final int STATE_IN_PROGRESS = 2;  //在途中
@@ -23,8 +25,4 @@ public class Express implements RealmModel {
 
     //2-在途中,3-签收,4-问题件
     public int state;
-
-    public Express(String logisticCode) {
-        this.logisticCode = logisticCode;
-    }
 }
