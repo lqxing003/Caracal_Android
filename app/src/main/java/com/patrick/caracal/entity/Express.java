@@ -19,10 +19,13 @@ public class Express implements RealmModel {
 
     //快递单号
     @PrimaryKey
-    public String logisticCode;
+    public String LogisticCode;
 
-    public RealmList<Trace> traces;
+    //快递公司编码
+    public String ShipperCode;
+
+    public RealmList<Trace> Traces;
 
     //2-在途中,3-签收,4-问题件
-    public int state;
+    public int State;
 }

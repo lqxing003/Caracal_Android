@@ -5,7 +5,7 @@
     <color name="colorAccent">#FFAB40</color>
 
     <color name="bottombar_color">#424242</color>
-
+    <color name="home_background_color">#CFD8DC</color>
     <!--QRCode scanner color begin-->
     <color name="viewfinder_mask">#60000000</color>
     <color name="result_view">#B0000000</color>

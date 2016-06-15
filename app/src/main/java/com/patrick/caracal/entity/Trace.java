@@ -10,9 +10,9 @@ import io.realm.annotations.RealmClass;
  */
 @RealmClass
 public class Trace implements RealmModel {
-    public String acceptTime;
+    public String AcceptTime;
 
-    public String acceptStation;
+    public String AcceptStation;
 
-    public String remark;
+    public String Remark;
 }

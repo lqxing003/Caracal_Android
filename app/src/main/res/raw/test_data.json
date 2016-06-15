@@ -1,0 +1,102 @@
+[
+  {
+    "EBusinessID": "1258729",
+    "ShipperCode": "HHTT",
+    "Success": true,
+    "LogisticCode": "666570740477",
+    "State": "3",
+    "Traces": [
+      {
+        "AcceptTime": "2016-06-07 19:57:53",
+        "AcceptStation": "由【广州聚龙分部(020-32279983 /32279911/81148601/ 32279991/32279998)】发往【广州分拨中心】"
+      },
+      {
+        "AcceptTime": "2016-06-07 22:58:46",
+        "AcceptStation": "【广州分拨中心】正在进行【装袋】扫描"
+      },
+      {
+        "AcceptTime": "2016-06-07 22:58:47",
+        "AcceptStation": "由【广州分拨中心】发往【广州中心】"
+      },
+      {
+        "AcceptTime": "2016-06-08 02:27:25",
+        "AcceptStation": "由【广州分拨中心】发往【广州荔湾仓】"
+      },
+      {
+        "AcceptTime": "2016-06-08 06:02:44",
+        "AcceptStation": "由【广州分拨中心】发往【广州六榕分部】"
+      },
+      {
+        "AcceptTime": "2016-06-08 08:13:46",
+        "AcceptStation": "快件已到达【广州六榕分部】扫描员是【陈刚15360505770】上一站是【广州分拨中心】"
+      },
+      {
+        "AcceptTime": "2016-06-08 09:36:19",
+        "AcceptStation": "【广州六榕分部】的派件员【陈刚15360505770】正在派件"
+      },
+      {
+        "AcceptTime": "2016-06-08 13:50:29",
+        "AcceptStation": "已签收,签收人是【本人】，签收网点是【广州六榕分部】"
+      }
+    ]
+  },
+  {
+    "EBusinessID": "1258729",
+    "ShipperCode": "ANE",
+    "Success": true,
+    "LogisticCode": "210001633605",
+    "State": "3",
+    "Traces": [
+      {
+        "AcceptTime": "2016-03-31 16:11:00",
+        "AcceptStation": "快件在【朝阳会员赵浩阳】装车",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-03-31 17:07:14",
+        "AcceptStation": "快件到达【北京分拨中心】",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 04:54:02",
+        "AcceptStation": "快件在【北京分拨中心】装车",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 07:36:59",
+        "AcceptStation": "快件到达【天津分拨中心】",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 10:55:56",
+        "AcceptStation": "快件在【天津分拨中心】装车",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 13:44:10",
+        "AcceptStation": "快件到达【和平滨江道】",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 13:44:12",
+        "AcceptStation": "【和平滨江道】的【和平滨江道】正在派件",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-01 15:14:31",
+        "AcceptStation": "",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-03 09:42:48",
+        "AcceptStation": "【和平滨江道】的【和平滨江道】正在派件",
+        "Remark": ""
+      },
+      {
+        "AcceptTime": "2016-04-03 09:43:16",
+        "AcceptStation": "【刘刚】已签收",
+        "Remark": ""
+      }
+    ]
+  }
+]

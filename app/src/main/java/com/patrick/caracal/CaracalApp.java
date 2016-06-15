@@ -46,6 +46,7 @@ public class CaracalApp extends Application {
         if (results.isEmpty()) {
             loadExpressCompany();
         }
+        realm.close();
     }
 
     private void loadExpressCompany() {
@@ -56,6 +57,8 @@ public class CaracalApp extends Application {
         realm.executeTransaction(loadForeignExp); //国外数据
 
         realm.executeTransaction(loadTransportExp); //转运数据
+
+        realm.close();
     }
 
     private Realm.Transaction loadDomesticExp = new Realm.Transaction() {
