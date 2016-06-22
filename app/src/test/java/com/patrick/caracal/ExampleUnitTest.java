@@ -38,6 +38,8 @@ public class ExampleUnitTest {
 
     @Test
     public void queryExpress() throws Exception {
+//        String expCode = "666570740477";        //天天快递
+//        String expNo = "HHTT";
         String expCode = "210001633605";
         String expNo = "ANE";
         String requestData = "{'OrderCode':'','ShipperCode':'" + expNo + "','LogisticCode':'" + expCode + "'}";
