@@ -21,6 +21,13 @@
             </intent-filter>
         </activity>
         <activity android:name="com.google.zxing.activity.CaptureActivity"/>
+        <!--新加入的快递公司查询界面-->
+        <activity android:name=".view.ExpressSelectActivity"
+                  android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
+        </activity>
+        <activity android:name=".view.QueryExpressActivity"
+                  android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
+        </activity>
     </application>
 
 </manifest>

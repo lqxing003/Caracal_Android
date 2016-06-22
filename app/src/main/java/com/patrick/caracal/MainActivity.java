@@ -13,6 +13,7 @@ import com.google.zxing.activity.CaptureActivity;
 import com.ncapdevi.fragnav.FragNavController;
 import com.patrick.caracal.fragment.HomeFragment;
 import com.patrick.caracal.fragment.MeFragment;
+import com.patrick.caracal.view.QueryExpressActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
