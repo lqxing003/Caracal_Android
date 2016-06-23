@@ -1,6 +1,7 @@
 package com.patrick.caracal.entity;
 
 import io.realm.RealmModel;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 import io.realm.annotations.Required;
@@ -30,4 +31,8 @@ public class ExpressCompany implements RealmModel{
     //快递公司类型
     public int type;
 
+    //
+    public String enName;
+
+    public boolean selected = false;
 }

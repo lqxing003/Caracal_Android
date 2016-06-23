@@ -46,6 +46,7 @@ public class CaracalApp extends Application {
         if (results.isEmpty()) {
             loadExpressCompany();
         }
+        Center.init();
         realm.close();
     }
 

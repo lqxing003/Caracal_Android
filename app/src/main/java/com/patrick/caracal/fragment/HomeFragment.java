@@ -1,11 +1,18 @@
 package com.patrick.caracal.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.patrick.caracal.MainActivity;
+import com.patrick.caracal.view.ExpressSelectActivity;
+import com.patrick.caracal.R;
+import com.patrick.caracal.view.QueryExpressActivity;
 import android.widget.TextView;
 
 import com.diegodobelo.expandingview.ExpandingItem;

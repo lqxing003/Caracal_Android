@@ -11,6 +11,7 @@ import com.ncapdevi.fragnav.FragNavController;
 import com.patrick.caracal.fragment.HistoryFragment;
 import com.patrick.caracal.fragment.HomeFragment;
 import com.patrick.caracal.fragment.MeFragment;
+import com.patrick.caracal.view.QueryExpressActivity;
 import com.patrick.caracal.fragment.NewExpressFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;

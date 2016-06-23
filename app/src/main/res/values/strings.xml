@@ -5,6 +5,17 @@
     <string name="manual_add_express">手动添加单号</string>
     <string name="scan_add_express">扫描快递单</string>
 
+    <string name="no_results">没有搜索到匹配的内容</string>
+
+    <string name="query_express_tv_title">查询信息</string>
+    <string name="query_express_edit_hint">请在此输入快递单号！</string>
+    <string name="query_express_hot_express">热门快递公司</string>
+    <string name="query_express_btn_more_select">更多选择</string>
+
+    <string name="come_back">返回</string>
+    <string name="complete">完成</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

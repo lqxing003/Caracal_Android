@@ -14,4 +14,8 @@
     <color name="laser_color">#0F0</color>
     <color name="corner_color">#00FF00</color>
     <!--QRCode scanner color end-->
+    
+    <color name="division_line">#514131</color>
+    <color name="border_color">#757474</color>
+    <color name="selected">#38bc1b</color>
 </resources>
