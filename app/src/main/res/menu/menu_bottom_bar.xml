@@ -6,17 +6,17 @@
         android:title="Home" />
 
     <item
-        android:id="@+id/bottomBarItem2"
+        android:id="@+id/bottomBarItem_History"
         android:icon="@drawable/ic_android_24dp"
         android:title="Featrue" />
 
     <item
-        android:id="@+id/bottomBarItem3"
+        android:id="@+id/bottomBarItem_NewOrder"
         android:icon="@drawable/ic_android_24dp"
         android:title="Featrue" />
 
     <item
-        android:id="@+id/bottomBarItem4"
+        android:id="@+id/bottomBarItem_Me"
         android:icon="@drawable/ic_android_24dp"
         android:title="Featrue" />
 </menu>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
+    android:padding="20dp"
     app:item_layout="@layout/express_expanding_item"
     app:sub_item_layout="@layout/express_expanding_sub_item"
     app:indicator_size="42dp"
