@@ -94,17 +94,24 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this,view);
-
         //加载快递单的UI列表
         loadExpressLayout();
-
         return view;
     }
+
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//
+//    }
 
     private void loadExpressLayout() {
         for (int i = 0; i < localExpressResults.size(); i++) {
             Express express = localExpressResults.get(i);
             ExpandingItem item = express_listview.createNewItem(R.layout.express_expanding_layout);
+
+            item.setIndicatorColorRes(R.color.colorPrimary);
+            item.setIndicatorIconRes(R.drawable.ic_express_24dp);
 
             String companyName = getExpressCompanyName(express.ShipperCode);
 
