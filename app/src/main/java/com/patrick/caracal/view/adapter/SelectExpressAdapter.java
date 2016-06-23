@@ -32,7 +32,7 @@ public class SelectExpressAdapter extends RecyclerView.Adapter<SelectExpressAdap
 
     @Override
     public SelectExpressAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_express, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_select_express, parent, false);
         return new ViewHolder(view);
     }
 

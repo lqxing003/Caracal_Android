@@ -23,11 +23,13 @@ public class Center {
 
     public static RealmResults<ExpressCompany> allExpressCompanyList;
 
+    public static List<RealmResults<ExpressCompany>> hotExpresslist = new ArrayList<>();
+
+    public static RealmResults<ExpressCompany> selectExpress;
+
     public static String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
                                          "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
                                          "U", "V", "W", "X", "Y", "Z"};
-
-    public static List<RealmResults<ExpressCompany>> hotExpresslist = new ArrayList<>();
 
     private static String[] HOT_EXPRESS_COMPANY = {"顺丰快递", "中通速递",
                                                 "圆通速递", "韵达快递",
@@ -37,6 +39,7 @@ public class Center {
     public static void init(){
 
         allExpressCompanyList = Realm.getDefaultInstance().where(ExpressCompany.class).findAll();
+        selectExpress = Realm.getDefaultInstance().where(ExpressCompany.class).equalTo("selected", true).findAll();
 
         for (int i = 0; i < alphabet.length; i++){
             RealmResults<ExpressCompany> expressCompanies = Realm.getDefaultInstance()

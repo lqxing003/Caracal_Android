@@ -18,7 +18,7 @@
             android:gravity="center"
             android:id="@+id/tvComeback"
             android:text="返回"
-
+            android:background="@drawable/share_butten_express_actionbar"
             />
 
         <TextView
@@ -34,14 +34,69 @@
         <TextView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:text="@string/complete"
-            android:textColor="@color/white"
             android:gravity="center"
             android:id="@+id/tvComplete"
             />
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearExpressType"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/domestic_name"
+                />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/foreign_name"
+                />
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/transport_name"
+                android:id="@+id/textView"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="5dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/tabLineIv"
+            />
+
+    </LinearLayout>
 
 
     <android.support.v4.view.ViewPager

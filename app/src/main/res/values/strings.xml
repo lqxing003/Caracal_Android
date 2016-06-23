@@ -14,5 +14,8 @@
 
     <string name="come_back">返回</string>
     <string name="complete">完成</string>
+    <string name="domestic_name">国内</string>
+    <string name="foreign_name">国外</string>
+    <string name="transport_name">转运</string>
 
 </resources>

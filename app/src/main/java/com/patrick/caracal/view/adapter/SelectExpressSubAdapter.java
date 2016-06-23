@@ -50,7 +50,7 @@ public class SelectExpressSubAdapter extends RecyclerView.Adapter<SelectExpressS
             holder.linearExpressSub.setBackgroundColor(mContext.getResources().getColor(R.color.selected));
         }
 
-        holder.tvExpressName.setOnClickListener(new View.OnClickListener() {
+        holder.linearExpressSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Realm realm = Realm.getDefaultInstance();

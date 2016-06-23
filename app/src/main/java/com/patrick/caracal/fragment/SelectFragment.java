@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 
 import com.patrick.caracal.Center;
 import com.patrick.caracal.R;
@@ -21,6 +23,8 @@ import com.patrick.caracal.view.iview.IEnActionBarAdapter;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
@@ -30,8 +34,7 @@ import io.realm.RealmResults;
 
 public class SelectFragment extends Fragment implements IEnActionBarAdapter {
 
-    private RecyclerView rvDomestic;
-    private RecyclerView rvEnNameActionbar;
+
     private View mView;
     private LinearLayoutManager mLinearLayoutManager;
     private LinearLayoutManager nLinearLayoutManager;
@@ -48,21 +51,24 @@ public class SelectFragment extends Fragment implements IEnActionBarAdapter {
         }
     };
 
+    private int frameActionbarHeight;
+
+    @BindView(R.id.frameEnActionbar) FrameLayout frameEnActionbar;
+    @BindView(R.id.rvDomestic) RecyclerView rvDomestic;
+    @BindView(R.id.rvEnNameActionbar) RecyclerView rvEnNameActionbar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         mView = inflater.inflate(R.layout.fragment_select_express, container, false);
-        rvDomestic = (RecyclerView) mView.findViewById(R.id.rvDomestic);
-        rvEnNameActionbar = (RecyclerView) mView.findViewById(R.id.rvEnNameActionbar);
+        ButterKnife.bind(this, mView);
         return mView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         Center.allExpressCompanyList.addChangeListener(mRealmChangeListener);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mSelectExpressAdapter = new SelectExpressAdapter(getContext(), mRealmResultses);
@@ -70,23 +76,33 @@ public class SelectFragment extends Fragment implements IEnActionBarAdapter {
         rvDomestic.setAdapter(mSelectExpressAdapter);
 
         nLinearLayoutManager = new LinearLayoutManager(getContext());
-        mEnActionBarAdapter = new EnActionBarAdapter(getContext(), mRealmResultses, this);
-        rvEnNameActionbar.setLayoutManager(nLinearLayoutManager);
-        rvEnNameActionbar.setAdapter(mEnActionBarAdapter);
 
-        rvDomestic.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @TargetApi(Build.VERSION_CODES.M)
+        rvEnNameActionbar.setLayoutManager(nLinearLayoutManager);
+
+
+        surveyControl();
+    }
+
+    private void surveyControl() {
+        ViewTreeObserver vto = frameEnActionbar.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-//                Log.i(TAG, "onScrollStateChanged: "+ mSelectExpressAdapter.getItemCount());
+            public void onGlobalLayout() {
+                frameEnActionbar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                //设置裁剪的尺寸
+                frameActionbarHeight= frameEnActionbar.getHeight();
+                mEnActionBarAdapter = new EnActionBarAdapter(getContext(),
+                                                            mRealmResultses,
+                                                            SelectFragment.this,
+                                                            frameActionbarHeight);
+                rvEnNameActionbar.setAdapter(mEnActionBarAdapter);
             }
         });
     }
-
-
     @Override
     public void onClickEnName(int p) {
+
         rvDomestic.scrollToPosition(p);
     }
 

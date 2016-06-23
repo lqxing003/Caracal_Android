@@ -25,12 +25,17 @@ public class EnActionBarAdapter extends RecyclerView.Adapter<EnActionBarAdapter.
     private List<RealmResults<ExpressCompany>> mRealmResultses;
     private Context mContext;
     private IEnActionBarAdapter mIEnActionBarAdapter;
+    private int frameActionbarHeight;
 
 
-    public EnActionBarAdapter(Context context, List<RealmResults<ExpressCompany>> realmResultses, IEnActionBarAdapter IEnActionBarAdapter) {
+    public EnActionBarAdapter(Context context,
+                              List<RealmResults<ExpressCompany>> realmResultses,
+                              IEnActionBarAdapter IEnActionBarAdapter,
+                              int frameActionbarHeight) {
         mContext = context;
         mRealmResultses = realmResultses;
         mIEnActionBarAdapter = IEnActionBarAdapter;
+        this.frameActionbarHeight = frameActionbarHeight;
     }
 
     @Override
@@ -41,7 +46,7 @@ public class EnActionBarAdapter extends RecyclerView.Adapter<EnActionBarAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-
+        holder.tvEnName.getLayoutParams().height = frameActionbarHeight / mRealmResultses.size();
         holder.tvEnName.setText(mRealmResultses.get(position).get(0).enName);
         holder.tvEnName.setOnClickListener(new View.OnClickListener() {
             @Override

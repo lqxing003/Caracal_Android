@@ -7,10 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.patrick.caracal.MainActivity;
-import com.patrick.caracal.view.ExpressSelectActivity;
 import com.patrick.caracal.R;
 import com.patrick.caracal.view.QueryExpressActivity;
 import android.widget.TextView;
@@ -18,7 +15,6 @@ import android.widget.TextView;
 import com.diegodobelo.expandingview.ExpandingItem;
 import com.diegodobelo.expandingview.ExpandingList;
 import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.patrick.caracal.R;
 import com.patrick.caracal.entity.Express;
 import com.patrick.caracal.entity.ExpressCompany;
 import com.patrick.caracal.entity.Trace;
@@ -55,6 +51,11 @@ public class HomeFragment extends Fragment {
             realm.commitTransaction();
             realm.close();
         }
+    }
+
+    @OnClick(R.id.manual_add_express) void manualAddExpressNumber(){
+        Intent intent = new Intent(getActivity(), QueryExpressActivity.class);
+        startActivityForResult(intent, 100);
     }
 
     @BindView(R.id.express_list)

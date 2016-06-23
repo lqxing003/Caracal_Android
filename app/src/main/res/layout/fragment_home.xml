@@ -16,12 +16,14 @@
         android:id="@+id/multiple_actions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_marginBottom="10dp"
         android:layout_marginRight="10dp"
         app:fab_addButtonColorPressed="@color/white"
-        app:fab_labelStyle="@style/menu_labels_style">
+        app:fab_labelStyle="@style/menu_labels_style"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_add_test_data"
@@ -42,7 +44,9 @@
             app:fab_icon="@drawable/ic_pen_24dp"
             app:fab_title="@string/manual_add_express"
             tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="45dp" />
+            tools:layout_editor_absoluteY="45dp"
+            android:id="@+id/manual_add_express"
+            />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
