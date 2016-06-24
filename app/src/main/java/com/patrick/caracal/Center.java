@@ -15,16 +15,19 @@ import io.realm.RealmResults;
 
 public class Center {
 
+    //国内快递公司列表
     public static List<RealmResults<ExpressCompany>> domesticEexpressList = new ArrayList<>();
 
+    //国外快递公司列表
     public static List<RealmResults<ExpressCompany>> foreignEexpressList = new ArrayList<>();
 
+    //转运公司列表
     public static List<RealmResults<ExpressCompany>> transportEexpressList = new ArrayList<>();
 
-    public static RealmResults<ExpressCompany> allExpressCompanyList;
-
+    //热门城市列表
     public static List<RealmResults<ExpressCompany>> hotExpresslist = new ArrayList<>();
 
+    //已选定快递公司
     public static RealmResults<ExpressCompany> selectExpress;
 
     public static String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
@@ -38,7 +41,7 @@ public class Center {
 
     public static void init(){
 
-        allExpressCompanyList = Realm.getDefaultInstance().where(ExpressCompany.class).findAll();
+
         selectExpress = Realm.getDefaultInstance().where(ExpressCompany.class).equalTo("selected", true).findAll();
 
         for (int i = 0; i < alphabet.length; i++){

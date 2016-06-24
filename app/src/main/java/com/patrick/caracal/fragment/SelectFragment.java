@@ -69,7 +69,7 @@ public class SelectFragment extends Fragment implements IEnActionBarAdapter {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Center.allExpressCompanyList.addChangeListener(mRealmChangeListener);
+        Center.selectExpress.addChangeListener(mRealmChangeListener);
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mSelectExpressAdapter = new SelectExpressAdapter(getContext(), mRealmResultses);
         rvDomestic.setLayoutManager(mLinearLayoutManager);
@@ -109,6 +109,6 @@ public class SelectFragment extends Fragment implements IEnActionBarAdapter {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Center.allExpressCompanyList.removeChangeListener(mRealmChangeListener);
+        Center.selectExpress.removeChangeListener(mRealmChangeListener);
     }
 }

@@ -38,8 +38,8 @@ public class KDNiaoAPI {
      * @param expCode 快递公司编码
      * @param callback 回调
      */
-    public static void queryExp(String expNo, String expCode, Callback callback) throws Exception{
-        String requestData = "{'OrderCode':'','ShipperCode':'" + expNo + "','LogisticCode':'" + expCode + "'}";
+    public static void queryExp(String expCode, String expNo, Callback callback) throws Exception{
+        String requestData = "{'OrderCode':'','ShipperCode':'" + expCode + "','LogisticCode':'" + expNo + "'}";
 
         String bodyContent = generateParamsBodyStr(requestData,TYPE_QUERY);
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
