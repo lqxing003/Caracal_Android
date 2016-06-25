@@ -1,4 +1,4 @@
-package com.patrick.caracal.view;
+package com.patrick.caracal.activity;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -7,16 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.patrick.caracal.Center;
 import com.patrick.caracal.R;
-import com.patrick.caracal.fragment.SelectFragment;
+import com.patrick.caracal.view.fragment.SelectFragment;
 
 import com.patrick.caracal.view.adapter.FragmentAdapter;
 

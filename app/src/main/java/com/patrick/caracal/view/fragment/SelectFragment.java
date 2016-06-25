@@ -1,4 +1,4 @@
-package com.patrick.caracal.fragment;
+package com.patrick.caracal.view.fragment;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

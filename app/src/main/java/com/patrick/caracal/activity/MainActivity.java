@@ -1,6 +1,5 @@
-package com.patrick.caracal;
+package com.patrick.caracal.activity;
 
-import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -8,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.ncapdevi.fragnav.FragNavController;
-import com.patrick.caracal.fragment.HistoryFragment;
-import com.patrick.caracal.fragment.HomeFragment;
-import com.patrick.caracal.fragment.MeFragment;
-import com.patrick.caracal.view.QueryExpressActivity;
-import com.patrick.caracal.fragment.NewExpressFragment;
+import com.patrick.caracal.R;
+import com.patrick.caracal.view.fragment.HistoryFragment;
+import com.patrick.caracal.view.fragment.HomeFragment;
+import com.patrick.caracal.view.fragment.MeFragment;
+import com.patrick.caracal.view.fragment.NewExpressFragment;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 

@@ -13,7 +13,7 @@
   {"code":"EMS","name":"EMS","type":1,"enName":"E"},
   {"code":"FAST","name":"快捷速递","type":1,"enName":"K"},
   {"code":"FEDEX","name":"FedEx联邦快递","type":1,"enName":"F"},
-  {"code":"FKD","name":"飞康达","type":1,"enName":"AF"},
+  {"code":"FKD","name":"飞康达","type":1,"enName":"F"},
   {"code":"GDEMS","name":"广东邮政","type":1,"enName":"G"},
   {"code":"GSD","name":"共速达","type":1,"enName":"G"},
   {"code":"GTO","name":"国通快递","type":1,"enName":"G"},

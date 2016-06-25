@@ -1,4 +1,4 @@
-package com.patrick.caracal.view;
+package com.patrick.caracal.activity;
 
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -19,14 +18,9 @@ import android.widget.Toast;
 import com.patrick.caracal.Center;
 import com.patrick.caracal.R;
 import com.patrick.caracal.entity.Express;
-import com.patrick.caracal.entity.ExpressCompany;
 import com.patrick.caracal.net.KDNiaoAPI;
 import com.patrick.caracal.view.adapter.HotExpressAdapter;
 import com.patrick.caracal.view.iview.IHotExpressAdapter;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -35,7 +29,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

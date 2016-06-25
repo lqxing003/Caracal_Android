@@ -1,4 +1,4 @@
-package com.patrick.caracal.fragment;
+package com.patrick.caracal.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.patrick.caracal.R;
-import com.patrick.caracal.view.QueryExpressActivity;
+import com.patrick.caracal.activity.QueryExpressActivity;
 import android.widget.TextView;
 
 import com.diegodobelo.expandingview.ExpandingItem;
