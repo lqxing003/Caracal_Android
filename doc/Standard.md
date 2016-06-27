@@ -64,6 +64,12 @@ FloatingActionButton btn_add_test_data;
 
 -----
 
+#### Rey5137 Material 
+
+当前控件，优先选择 [rey5137/material](https://github.com/rey5137/material) 的控件
+
+-----
+
 #### Activity
 
 新建的任何Activity都要集成BaseActivity，
