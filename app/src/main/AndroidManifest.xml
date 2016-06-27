@@ -18,7 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name="com.google.zxing.activity.CaptureActivity" />
         <!-- 新加入的快递公司查询界面 -->
@@ -26,14 +30,9 @@
             android:name=".activity.QueryExpressActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".activity.IndexableListviewActivity"
+            android:name=".activity.ExpCompanySelectActivity"
             android:theme="@style/AppTheme">
 
         </activity>

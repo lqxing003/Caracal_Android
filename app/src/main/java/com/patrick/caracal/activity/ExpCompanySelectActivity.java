@@ -1,31 +1,24 @@
 package com.patrick.caracal.activity;
 
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.patrick.caracal.R;
 import com.patrick.caracal.entity.ExpCompanyShowEntity;
-import com.patrick.caracal.entity.ExpressCompany;
 import com.patrick.caracal.model.ExpCompanyModel;
 import com.patrick.caracal.view.adapter.ExpCompanyAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
-import io.realm.RealmResults;
 import me.yokeyword.indexablelistview.IndexEntity;
 import me.yokeyword.indexablelistview.IndexHeaderEntity;
 import me.yokeyword.indexablelistview.IndexableStickyListView;
 
-public class IndexableListviewActivity extends BaseActivity {
+public class ExpCompanySelectActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -97,6 +90,7 @@ public class IndexableListviewActivity extends BaseActivity {
         @Override
         public void onItemClick(View v, IndexEntity indexEntity) {
 //            Log.d(TAG, "onItemClick: "+indexEntity.getName());
+            //TODO 点击后，把结果返回到上一个界面
         }
     };
 }

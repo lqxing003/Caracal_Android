@@ -2,7 +2,8 @@
     <string name="app_name">Caracal</string>
     <string name="action_settings">Settings</string>
 
-    <string name="manual_add_express">手动添加单号</string>
+    <!--<string name="manual_add_express">手动添加单号</string>-->
+    <string name="add_express">添加单号</string>
     <string name="scan_add_express">扫描快递单</string>
 
     <string name="no_results">没有搜索到匹配的内容</string>
@@ -19,7 +20,6 @@
     <string name="transport_name">转运</string>
     <string name="progress_msg_query">正在查询请稍后..</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_select_exp_company">选择快递公司</string>
     <string name="section_format">Hello World from section: %1$d</string>
