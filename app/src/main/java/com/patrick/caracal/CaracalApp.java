@@ -19,15 +19,13 @@ import io.realm.RealmResults;
 
 public class CaracalApp extends Application {
 
-    private InitializationData initializationData;
-
     @Override
     public void onCreate() {
         super.onCreate();
 
         initRealmDB();
 
-        initializationData = new InitializationData(this);
+        InitializationData initializationData = new InitializationData(this,Realm.getDefaultInstance());
         initializationData.initRequiredData();
     }
 

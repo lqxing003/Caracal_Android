@@ -26,23 +26,42 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //bottom bar组件
-    //拉伸列表组件
-    //float action bar 组件
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
+
+    //OKHttp
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+
+    //底部栏
     compile 'com.roughike:bottom-bar:1.3.7'
+    //fragment导航管理工具
     compile 'com.ncapdevi:frag-nav:1.0.3'
+
+    //首页伸缩列表
     compile 'com.diegodobelo.expandingview:expanding-view:0.9.1'
+
+    //Float Action Bar
     compile 'com.getbase:floatingactionbutton:1.10.1'
+
+    //扫码zxing
     compile 'com.google.zxing:core:3.2.1'
+
+    //神器
     compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+
+    //Log管理打印工具
+    compile 'com.jiongbull:jlog:1.0.5'
+
+    //快递公司列表选择工具
     compile 'me.yokeyword:indexablestickylistview:0.6.1'
+
+    //Rey5137 Material
+    compile 'com.github.rey5137:material:1.2.4'
+
     testCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:23.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.1.0'
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.RawRes;
 
-import com.patrick.caracal.Center;
 import com.patrick.caracal.R;
 import com.patrick.caracal.entity.ExpressCompany;
 
@@ -20,36 +19,36 @@ import io.realm.RealmResults;
  * 初始化数据的model
  *
  */
+public class InitializationData extends Model{
 
-public class InitializationData {
-
-    private Context context;
-
-    public InitializationData(Context context) {
-        this.context = context;
+    public InitializationData(Context context,Realm realm) {
+        super(context,realm);
     }
 
-    //检测本地数据是否已初始化完成
+    /**
+     * 检测本地数据是否已初始化完成
+     */
     public void initRequiredData(){
         //检测快递公司
         checkExpressCompanyReady();
     }
 
+    /**
+     * 检查快递公司是否已导入
+     */
     private void checkExpressCompanyReady() {
-        Realm realm = Realm.getDefaultInstance();
         RealmResults<ExpressCompany> results = realm.where(ExpressCompany.class).findAll();
         if (results.isEmpty()) {
             importExpressCompany();
         }
-        Center.init();
-        realm.close();
+
+
     }
 
     /**
      * 导入快递公司
      */
     private void importExpressCompany(){
-        Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransaction(loadDomesticExp); //国内数据
 
@@ -57,10 +56,13 @@ public class InitializationData {
 
         realm.executeTransaction(loadTransportExp); //转运数据
 
+        //导入数据完毕后,关闭realm
         realm.close();
     }
 
-
+    /**
+     * 导入国内快递
+     */
     private Realm.Transaction loadDomesticExp = new Realm.Transaction() {
         @Override
         public void execute(Realm realm) {
@@ -73,6 +75,9 @@ public class InitializationData {
         }
     };
 
+    /**
+     * 导入国外快递
+     */
     private Realm.Transaction loadForeignExp = new Realm.Transaction() {
         @Override
         public void execute(Realm realm) {
@@ -85,6 +90,9 @@ public class InitializationData {
         }
     };
 
+    /**
+     * 导入中转物流
+     */
     private Realm.Transaction loadTransportExp = new Realm.Transaction() {
         @Override
         public void execute(Realm realm) {
@@ -98,6 +106,12 @@ public class InitializationData {
         }
     };
 
+    /**
+     * 获取raw目录下的文件流
+     * @param res raw文件夹的文件
+     * @return
+     * @throws Resources.NotFoundException
+     */
     private InputStream getRawJsonFile(@RawRes int res) throws Resources.NotFoundException {
         return context.getResources().openRawResource(res);
     }

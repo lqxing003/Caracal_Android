@@ -38,5 +38,32 @@
 
 
 
-# API
+# 开发规范
 
+#### 控件绑定：
+
+在xml的layout写好布局后，在Activity中勿用findviewbyid进行对view的绑定，使用[Butter Knift](http://jakewharton.github.io/butterknife/) 的方法来取缔。
+
+example：
+
+```java
+//绑定控件
+@BindView(R.id.toolbar)
+Toolbar toolbar;
+
+//提供点击事件给控件
+@BindView(R.id.btn_add_test_data)
+FloatingActionButton btn_add_test_data;
+```
+
+
+
+[Butter Knift的更多说明](http://jakewharton.github.io/butterknife/)
+
+
+
+-----
+
+#### Activity
+
+新建的任何Activity都要集成BaseActivity，

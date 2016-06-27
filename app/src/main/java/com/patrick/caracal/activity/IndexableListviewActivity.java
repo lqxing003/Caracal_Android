@@ -13,22 +13,19 @@ import android.view.View;
 import com.patrick.caracal.R;
 import com.patrick.caracal.entity.ExpCompanyShowEntity;
 import com.patrick.caracal.entity.ExpressCompany;
+import com.patrick.caracal.model.ExpCompanyModel;
 import com.patrick.caracal.view.adapter.ExpCompanyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import io.realm.Realm;
 import io.realm.RealmResults;
 import me.yokeyword.indexablelistview.IndexEntity;
 import me.yokeyword.indexablelistview.IndexHeaderEntity;
 import me.yokeyword.indexablelistview.IndexableStickyListView;
 
-public class IndexableListviewActivity extends AppCompatActivity {
-
-    private static final String TAG = "IndexableListviewActivi";
+public class IndexableListviewActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -36,21 +33,26 @@ public class IndexableListviewActivity extends AppCompatActivity {
     @BindView(R.id.listView)
     IndexableStickyListView exp_listview;
 
-    private Realm realm;
-
-    private IndexHeaderEntity<ExpCompanyShowEntity> hotCompany;
+    /**
+     * 快递公司有关的model
+     */
+    private ExpCompanyModel expCompanyModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_indexable_listview);
-        ButterKnife.bind(this);
-
-        initRealm();
 
         initView();
 
-        initExpCompany();
+        expCompanyModel = new ExpCompanyModel(this, realm);
+
+        //热门快递公司header,adapter使用
+        IndexHeaderEntity<ExpCompanyShowEntity> hotCompanyHeader = new IndexHeaderEntity<>(
+                "热",
+                "热门快递",
+                expCompanyModel.getHotExpCompany());
+
+        exp_listview.bindDatas(expCompanyModel.getAllExpCompany(),hotCompanyHeader);
     }
 
     @Override
@@ -74,71 +76,27 @@ public class IndexableListviewActivity extends AppCompatActivity {
         return true;
     }
 
-    private void initRealm() {
-        realm = Realm.getDefaultInstance();
+    @Override
+    int layout() {
+        return R.layout.activity_indexable_listview;
     }
 
-    private void closeRealm(){
-        if (realm != null) {
-            realm.close();
-        }
-    }
-
+    /**
+     * 初始化快递列表和toolbar
+     */
     private void initView() {
         ExpCompanyAdapter adapter = new ExpCompanyAdapter(this);
         exp_listview.setAdapter(adapter);
         exp_listview.setOnItemContentClickListener(onClickExpCompany);
 
+        //设置toolbar
         setSupportActionBar(toolbar);
-    }
-
-    private void initExpCompany() {
-
-        List<ExpCompanyShowEntity> allCompany = getAllExpCompany();
-
-        exp_listview.bindDatas(allCompany,hotCompany);
-    }
-
-    /**
-     * 获取热门的快递列表
-     * 从Realm 读取全部的Express Company,然后转换成ExpCompanyShowEntity为了adapter显示
-     * @return
-     */
-    private List<ExpCompanyShowEntity> getAllExpCompany(){
-        //全部的快递列表
-        List<ExpCompanyShowEntity> expCompanyList = new ArrayList<>();
-        //热门的快递列表
-        List<ExpCompanyShowEntity> hotCompanyList = new ArrayList<>();
-
-        RealmResults<ExpressCompany> results = realm.where(ExpressCompany.class).findAll();
-        for (ExpressCompany company :
-                results) {
-            ExpCompanyShowEntity entity = new ExpCompanyShowEntity(company.name,company.code);
-            if (company.hot){
-                //如果是热门的快递,就添加一份的热门快递列表里面
-                hotCompanyList.add(entity);
-            }else{
-                expCompanyList.add(entity);
-            }
-
-        }
-
-        setupHotCompany(hotCompanyList);
-        return expCompanyList;
-    }
-
-    /**
-     * 设置热门城市的Header
-     * @param companyList 热门城市列表
-     */
-    private void setupHotCompany(List<ExpCompanyShowEntity> companyList){
-        hotCompany = new IndexHeaderEntity<>("热","热门快递",companyList);
     }
 
     private IndexableStickyListView.OnItemContentClickListener onClickExpCompany = new IndexableStickyListView.OnItemContentClickListener() {
         @Override
         public void onItemClick(View v, IndexEntity indexEntity) {
-            Log.d(TAG, "onItemClick: "+indexEntity.getName());
+//            Log.d(TAG, "onItemClick: "+indexEntity.getName());
         }
     };
 }
