@@ -2,7 +2,6 @@ package com.patrick.caracal.net;
 
 import com.patrick.caracal.util.Encrypt;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,8 +49,6 @@ public class KDNiaoAPI {
                 .build();
         client.newCall(request).enqueue(callback);
     }
-
-    //TODO 在线下单接口
 
     /**
      * 生成 post body的内容
