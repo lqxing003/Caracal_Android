@@ -3,9 +3,22 @@
     <!--<color name="colorPrimary">#3F51B5</color>-->
     <!--<color name="colorPrimaryDark">#303F9F</color>-->
     <!--<color name="colorAccent">#FF9800</color>-->
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF9800</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF9800</color>-->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="colorAccent">#FF5722</color>
+
+    <!--国内快递颜色-->
+    <color name="color_domestic">#00796B</color>
+    <!--国外快递颜色-->
+    <color name="color_foreign">#F44336</color>
+    <!--转运物流颜色-->
+    <color name="color_transport">#FF9800</color>
+
+
     <color name="primary_light">#C5CAE9</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>

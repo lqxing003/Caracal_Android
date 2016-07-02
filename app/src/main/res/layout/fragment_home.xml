@@ -7,8 +7,13 @@
     android:background="@color/home_background_color"
     android:orientation="vertical">
 
-    <com.diegodobelo.expandingview.ExpandingList
-        android:id="@+id/express_list"
+    <!--<com.diegodobelo.expandingview.ExpandingList-->
+        <!--android:id="@+id/express_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

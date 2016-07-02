@@ -38,9 +38,6 @@ dependencies {
     //fragment导航管理工具
     compile 'com.ncapdevi:frag-nav:1.0.3'
 
-    //首页伸缩列表
-    compile 'com.diegodobelo.expandingview:expanding-view:0.9.1'
-
     //Float Action Bar
     compile 'com.getbase:floatingactionbutton:1.10.1'
 
