@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.patrick.caracal.R;
+import com.patrick.caracal.activity.ParcelInfoActivity;
 import com.patrick.caracal.activity.QueryExpressActivity;
+
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -38,36 +43,41 @@ import io.realm.RealmResults;
  * Created by Patrick on 16/6/13.
  */
 
-public class HomeFragment extends Fragment{
+public class HomeFragment extends Fragment {
+
+    //fragment的root layout
+    @BindView(R.id.fragment_home_layout)
+    CoordinatorLayout home_layout;
+
+    @BindView(R.id.multiple_actions)
+    FloatingActionsMenu multiple_actions;
 
     @BindView(R.id.btn_add_test_data)
     FloatingActionButton btn_add_test_data;
 
-    @OnClick(R.id.btn_add_test_data) void importTestData(){
-        //导入测试数据
+    @OnClick(R.id.btn_add_test_data)
+    void importTestData() {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        InputStream inputStream = this.getResources().openRawResource(R.raw.test_data);
-        try {
-            realm.createOrUpdateAllFromJson(Express.class,inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            realm.commitTransaction();
-            realm.close();
-        }
+
+        realm.where(Express.class).findAll().first().localState = Express.LOCAL_STATE_NORMAL;
+        realm.commitTransaction();
+
+        multiple_actions.collapse();
     }
 
-    @OnClick(R.id.manual_add_express) void manualAddExpressNumber(){
+    @OnClick(R.id.manual_add_express)
+    void manualAddExpressNumber() {
         Intent intent = new Intent(getActivity(), QueryExpressActivity.class);
         startActivityForResult(intent, 100);
+
+        multiple_actions.collapse();
     }
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
 
     private Realm realm;
-
 
     //加载本地的快递单
     private RealmResults<Express> localExpressResults;
@@ -77,9 +87,9 @@ public class HomeFragment extends Fragment{
     private SwipeToAction swipeParcelList;
 
     public static HomeFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -104,8 +114,10 @@ public class HomeFragment extends Fragment{
     /**
      * 从Realm读取快递单
      */
-    private void loadLocalExpress(){
-        localExpressResults = realm.where(Express.class).findAll();
+    private void loadLocalExpress() {
+        localExpressResults = realm.where(Express.class)
+                .equalTo("localState", Express.LOCAL_STATE_NORMAL)
+                .findAll();
         localExpressResults.addChangeListener(listener);
     }
 
@@ -113,7 +125,7 @@ public class HomeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
 
         //RecyclerView 初始化
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -129,51 +141,18 @@ public class HomeFragment extends Fragment{
         return view;
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//
-//    }
-
-//    private void loadExpressLayout() {
-//        for (int i = 0; i < localExpressResults.size(); i++) {
-//            Express express = localExpressResults.get(i);
-//            ExpandingItem item = express_listview.createNewItem(R.layout.express_expanding_layout);
-//
-//            item.setIndicatorColorRes(R.color.colorPrimary);
-//            item.setIndicatorIconRes(R.drawable.ic_express_24dp);
-//
-//            String companyName = getExpressCompanyName(express.ShipperCode);
-//
-//            ((TextView)item.findViewById(R.id.logisticCode))
-//                    .setText("单号："+express.LogisticCode); //快递单
-//
-//            ((TextView)item.findViewById(R.id.companyName))
-//                    .setText(companyName);  //快递公司
-//
-//            RealmList<Trace> traces = express.Traces;
-//            item.createSubItems(traces.size());
-//            for (int j = traces.size()-1,k=0; j >= 0; j--,k++) {
-//                Trace trace = traces.get(j);
-//                View sub_item = item.getSubItemView(k);
-//                ((TextView)sub_item.findViewById(R.id.acceptStation)).setText(trace.AcceptStation);
-//
-//                if (k == 0) ((TextView)sub_item.findViewById(R.id.acceptStation)).setTextColor(getResources().getColor(R.color.colorPrimary));
-//            }
-//        }
-//    }
-
 
     /**
      * 获取快递公司名
+     *
      * @param shipperCode 快递公司编码
      * @return
      */
-    private String getExpressCompanyName(String shipperCode){
-        ExpressCompany company = realm.where(ExpressCompany.class).equalTo("code",shipperCode).findFirst();
-        if (company !=null){
+    private String getExpressCompanyName(String shipperCode) {
+        ExpressCompany company = realm.where(ExpressCompany.class).equalTo("code", shipperCode).findFirst();
+        if (company != null) {
             return company.name;
-        }else {
+        } else {
             return "未知快递";
         }
     }
@@ -208,11 +187,11 @@ public class HomeFragment extends Fragment{
         public String getAcceptStation(int position) {
             //快递行程
             RealmList<Trace> traces = localExpressResults.get(position).Traces;
-            if (traces.isEmpty()){
+            if (traces.isEmpty()) {
                 //如果快递行程是空,返回 "暂无数据"
                 return "暂无数据";
-            }else {
-                return traces.first().AcceptStation;
+            } else {
+                return traces.last().AcceptStation;
             }
         }
 
@@ -220,10 +199,10 @@ public class HomeFragment extends Fragment{
         public String getAcceptTime(int position) {
             //快递行程
             RealmList<Trace> traces = localExpressResults.get(position).Traces;
-            if (traces.isEmpty()){
+            if (traces.isEmpty()) {
                 return "暂无时间";
-            }else {
-                return traces.first().AcceptTime;
+            } else {
+                return traces.last().AcceptTime;
             }
         }
     };
@@ -231,28 +210,54 @@ public class HomeFragment extends Fragment{
     /**
      * 滑动事件
      */
-    private SwipeToAction.SwipeListener<Express> swipeListener =new SwipeToAction.SwipeListener<Express>() {
+    private SwipeToAction.SwipeListener<Express> swipeListener = new SwipeToAction.SwipeListener<Express>() {
         @Override
         public boolean swipeLeft(final Express itemData) {
-            //删除
-
+            //归档
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    itemData.localState = Express.LOCAL_STATE_ARCHIVE;
+                }
+            });
             return true;
         }
 
         @Override
         public boolean swipeRight(final Express itemData) {
-            //归档
+            //进入垃圾桶
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    itemData.localState = Express.LOCAL_STATE_TRASH;
+                }
+            });
+
+            displaySnackbar(itemData.LogisticCode + "已删除", "撤销", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            itemData.localState = Express.LOCAL_STATE_NORMAL;
+                        }
+                    });
+                }
+            });
             return true;
         }
 
         @Override
         public void onClick(Express itemData) {
-
+            //进入详情
+            Intent intent = new Intent(getContext(), ParcelInfoActivity.class);
+            intent.putExtra("parcelId", itemData.LogisticCode);
+            startActivity(intent);
         }
 
         @Override
         public void onLongClick(Express itemData) {
-
+            //暂时没有长按
         }
     };
 
@@ -264,4 +269,21 @@ public class HomeFragment extends Fragment{
             }
         }
     };
+
+    private void displaySnackbar(String text, String actionName, View.OnClickListener action) {
+
+
+//        if (recyclerView != null) {
+            Snackbar snack = Snackbar.make(home_layout, text, Snackbar.LENGTH_LONG).setAction(actionName, action);
+
+            View v = snack.getView();
+            v.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            ((TextView) v.findViewById(android.support.design.R.id.snackbar_text)).setTextColor(Color.WHITE);
+            ((TextView) v.findViewById(android.support.design.R.id.snackbar_action)).setTextColor(Color.BLACK);
+
+            snack.show();
+//        }
+
+
+    }
 }

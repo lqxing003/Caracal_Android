@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_home_layout"
     android:background="@color/home_background_color"
     android:orientation="vertical">
 
-    <!--<com.diegodobelo.expandingview.ExpandingList-->
-        <!--android:id="@+id/express_list"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        app:fab_addButtonColorPressed="@color/white"
-        app:fab_labelStyle="@style/menu_labels_style"
-        android:layout_marginEnd="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_add_test_data"
+        <com.getbase.floatingactionbutton.FloatingActionsMenu
+            android:id="@+id/multiple_actions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white"
-            app:fab_icon="@drawable/ic_scan_barcode_24dp"
-            app:fab_title="添加测试数据"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="123dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:fab_addButtonColorPressed="@color/white"
+            app:fab_labelStyle="@style/menu_labels_style">
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/white"
-            app:fab_icon="@drawable/ic_pen_24dp"
-            app:fab_title="@string/add_express"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="45dp"
-            android:id="@+id/manual_add_express"
-            />
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_add_test_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                app:fab_icon="@drawable/ic_scan_barcode_24dp"
+                app:fab_title="添加测试数据"
+                tools:layout_editor_absoluteX="161dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/manual_add_express"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_colorNormal="@color/white"
+                app:fab_colorPressed="@color/white"
+                app:fab_icon="@drawable/ic_pen_24dp"
+                app:fab_title="@string/add_express"
+                tools:layout_editor_absoluteX="161dp"
+                tools:layout_editor_absoluteY="45dp" />
 
 
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-</RelativeLayout>
+        </com.getbase.floatingactionbutton.FloatingActionsMenu>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

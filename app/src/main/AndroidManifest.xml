@@ -29,13 +29,11 @@
         <activity
             android:name=".activity.QueryExpressActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden|stateAlwaysHidden">
-        </activity>
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden"></activity>
         <activity
             android:name=".activity.ExpCompanySelectActivity"
-            android:theme="@style/AppTheme">
-
-        </activity>
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".activity.ParcelInfoActivity"></activity>
     </application>
 
 </manifest>
