@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,7 +19,6 @@ import com.patrick.caracal.R;
 import com.patrick.caracal.activity.ParcelInfoActivity;
 import com.patrick.caracal.activity.QueryExpressActivity;
 
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -27,9 +27,6 @@ import com.patrick.caracal.entity.ExpressCompany;
 import com.patrick.caracal.entity.Trace;
 import com.patrick.caracal.view.adapter.ParcelListAdapter;
 import com.patrick.caracal.view.widget.SwipeToAction;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,6 +45,9 @@ public class HomeFragment extends Fragment {
     //fragment的root layout
     @BindView(R.id.fragment_home_layout)
     CoordinatorLayout home_layout;
+
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @BindView(R.id.multiple_actions)
     FloatingActionsMenu multiple_actions;
@@ -138,6 +138,8 @@ public class HomeFragment extends Fragment {
         //滑动快递列表的事件
         swipeParcelList = new SwipeToAction(recyclerView, swipeListener);
 
+        //设置下拉刷新的事件
+        swipeRefreshLayout.setOnRefreshListener(swipeRefresh);
         return view;
     }
 
@@ -258,6 +260,14 @@ public class HomeFragment extends Fragment {
         @Override
         public void onLongClick(Express itemData) {
             //暂时没有长按
+        }
+    };
+
+    private SwipeRefreshLayout.OnRefreshListener swipeRefresh = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            //下拉刷新,把当前的 localExpressResults 遍历去更新状态
+
         }
     };
 
