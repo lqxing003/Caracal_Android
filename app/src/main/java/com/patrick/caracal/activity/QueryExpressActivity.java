@@ -2,6 +2,7 @@ package com.patrick.caracal.activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +50,7 @@ public class QueryExpressActivity extends BaseActivity {
 
     private Dialog mDialog;
     private String streamInfo;
-
+    private ProgressDialog mProgressDialog;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -110,6 +112,17 @@ public class QueryExpressActivity extends BaseActivity {
 
         setSupportActionBar(toolbar);
 
+        //返回按钮
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QueryExpressActivity.this.finish();
+            }
+        });
+
+        mProgressDialog = new ProgressDialog(QueryExpressActivity.this);
+        mProgressDialog.setMessage("正在查询请稍等……");
+
         //弹框
         mDialog = new AlertDialog.Builder(this)
                 .setMessage(getString(R.string.dialog_stream_none_error))
@@ -132,6 +145,7 @@ public class QueryExpressActivity extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_express_add, menu);
         return true;
     }
@@ -140,6 +154,7 @@ public class QueryExpressActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.done:
+
                 addExpress();
                 break;
         }
@@ -151,11 +166,8 @@ public class QueryExpressActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             switch (msg.what) {
-                case 1:
+                case SELECT_SAVE_INFO:
                     mDialog.show();
-                    break;
-                case 2:
-//                    saveOrUpdateData();
                     break;
                 default:
                     break;
@@ -183,6 +195,8 @@ public class QueryExpressActivity extends BaseActivity {
         // 在callback中，success就把结果保存到Realm
         // 如果callback到onFailure,弹出一个toast，然后用 showToast 把错误内容显示出来
 
+        mProgressDialog.show();
+
         //根据快递公司名查询快递公司Code
         RealmResults<ExpressCompany> expressCompanys = realm
                 .where(ExpressCompany.class)
@@ -201,6 +215,7 @@ public class QueryExpressActivity extends BaseActivity {
     private Callback mCallback = new Callback() {
         @Override
         public void onFailure(Call call, IOException e) {
+            mProgressDialog.dismiss();
             showToast(e.toString());
         }
 
@@ -209,13 +224,13 @@ public class QueryExpressActivity extends BaseActivity {
             if (response.code() == 200) {
 
                 streamInfo = response.body().string();
-                String streamReason = null;
+
                 try {
                     final JSONObject jsonObject = new JSONObject(streamInfo);
                     if (!TextUtils.isEmpty(jsonObject.optString("Reason"))) {
                         //如果Reason不为空
                         showToast(jsonObject.optString("Reason"));
-                        mHandler.sendEmptyMessage(1);
+                        mHandler.sendEmptyMessage(SELECT_SAVE_INFO);
                     } else {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -227,7 +242,7 @@ public class QueryExpressActivity extends BaseActivity {
                                         express.localState = Express.LOCAL_STATE_NORMAL;
                                     }
                                 });
-
+                                mProgressDialog.dismiss();
                                 QueryExpressActivity.this.setResult(RESULT_OK);
                                 QueryExpressActivity.this.finish();
                             }
@@ -235,23 +250,12 @@ public class QueryExpressActivity extends BaseActivity {
 
 
                     }
-//                    streamReason = jsonObject.get("Reason").toString();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                //TODO 不可以拿文字做判断
-//                if (streamReason != null && streamReason.equals(getString(R.string.select_none_error))){
-//                    showToast(getString(R.string.select_none_error));
-
-                //TODO 不要出现莫名数字,定义常量或枚举来解决,推荐前者
-//                    mHandler.sendEmptyMessage(1);
-//                }else {
-//                    mHandler.sendEmptyMessage(2);
-//                }
-
-//                Log.i("mCallback", "onResponse: " + streamInfo);
             }
         }
+
     };
 
     @Override

@@ -24,6 +24,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     //跳转快递公司RequestCode
     public static final int SELECT_REQ_CODE = 200;
 
+    //选择是否保存查询信息
+    public static final int SELECT_SAVE_INFO = 1;
+
+
     protected Realm realm;
 
     @Override
